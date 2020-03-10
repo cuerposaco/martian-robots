@@ -1,0 +1,19 @@
+{
+    "name": "martian-robots",
+    "version": "1.0.0",
+    "description": "Move robots over Mars surface",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "start:development": "nodemon index.js",
+        "test": "jest",
+        "test:watch": "npm run test -- --watchAll"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "jest": "^25.1.0",
+        "nodemon": "^2.0.2"
+    }
+}
