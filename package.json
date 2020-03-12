@@ -7,7 +7,8 @@
         "start": "node index.js",
         "start:development": "nodemon index.js",
         "test": "jest",
-        "test:watch": "npm run test -- --watchAll"
+        "test:watch": "npm run test -- --watchAll",
+        "test:coverage": "npm run test -- --coverage"
     },
     "keywords": [],
     "author": "",

@@ -1,6 +1,13 @@
 const fs = require("fs");
 const { create: createRobot } = require("../robot");
 
+const MAX_MOVES_CHARS = 100;
+const MAX_COORDINATE_VALUE = 50;
+
+const isValidMovesMaxChars = moves => moves.length < MAX_MOVES_CHARS;
+const isValidMaxBounds = (...coords) =>
+    coords.every(coord => coord < MAX_COORDINATE_VALUE);
+
 /**
  * Robots generator
  * @param {String} robotLines
@@ -17,6 +24,9 @@ function* extractRobotGenerator(instructions) {
     while (lines.length) {
         // extract first 2 lines of
         const [position, moves] = lines.splice(0, 2);
+        if (!isValidMovesMaxChars(moves)) {
+            throw new Error("Moves must be 100 characters or less");
+        }
         yield [position, moves];
     }
 
@@ -37,9 +47,18 @@ const parse = plainText => {
         .split(LINE_DELIMITER)
         .map(clearText)
         .filter(line => !!line);
+
+    const [x, y] = marsLines.split(" ").map(coord => Number(coord));
+    if (!isValidMaxBounds(x, y)) {
+        throw new Error("Max value allowed in coordinates is 50 or less");
+    }
+
     const generator = extractRobotGenerator(robotLines);
     const robots = [...generator];
-    const [x, y] = marsLines.split(" ").map(coord => Number(coord));
+
+    /* if (!robots.every(([_, moves]) => isValidMovesMaxChars(moves))) {
+            throw new Error("Moves must be 100 characters or less");
+        } */
 
     return (data = {
         mars: {
