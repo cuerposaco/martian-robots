@@ -7,6 +7,7 @@ describe("Move Robots over Mars Surface", () => {
             path.resolve("./data/instructions.txt")
         );
         const map = marsSurfaceApp.createMapFromBounds(parsedData.mars.bounds);
+        const mountedRobots = marsSurfaceApp.createRobots(parsedData.robots);
 
         it("obtain Mars and Roots info", () => {
             expect(parsedData.mars.bounds).toStrictEqual({ x: 5, y: 3 });
@@ -22,7 +23,7 @@ describe("Move Robots over Mars Surface", () => {
         });
 
         it("Given a Mars surface bounds and robots to walk then robots dicovers Mars surface", () => {
-            const result = marsSurfaceApp.scan(map, parsedData.robots);
+            const result = marsSurfaceApp.scan(map, mountedRobots);
             expect(result).toStrictEqual(["1 1 E", "3 3 N LOST", "2 3 S"]);
         });
     });
