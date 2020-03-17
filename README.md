@@ -1,16 +1,16 @@
 # Martian Robots
 
-Discover Mars surface using robots
+Discover Mars surface using robots.
 
 ## Getting Started
 
-Run this program with the following command:
+Execute the program using the following command:
 
 ```shell
 > npm start
 ```
 
-## Instructions
+## Input Data
 
-All Instructions are located into `data/intructions.txt` file, used when start the program
-If you want use another commands, change the content of file and run program again
+Input Data are located into `data/intructions.txt` file, loaded when the program has started.
+If you want provide another data, change the content of file and execute the program again.
